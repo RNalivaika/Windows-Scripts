@@ -1,0 +1,14 @@
+# Mount .wim file to local directory
+# -optimize for quicker access
+# -index number depends on your image file
+
+Mount-windowsimage -ImagePath "F:\Programs\CompressedContent.wim" -Path "f:\temp" -optimize -index 1
+
+
+# When required changes are made, commit
+
+Dism /Unmount-Image /MountDir:"F:\temp" /Commit
+
+# If no changes or commit not needed, discard
+
+Dismount-windowsimage -Path "f:\temp" -discard
