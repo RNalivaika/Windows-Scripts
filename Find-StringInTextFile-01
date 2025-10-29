@@ -1,0 +1,19 @@
+# Search for a specific string in specifig files in a folder
+####################################
+
+
+# Define the folder path and the search string
+$folderPath = "F:\Documents"
+$searchString = "Secret"
+
+# Get all .txt files in the folder
+$files = Get-ChildItem -Path $folderPath -Filter *.txt -Recurse
+foreach ($file in $files) {
+    $content = Get-Content -Path $file.FullName
+    foreach ($line in $content) {
+        if ($line -match $searchString) {
+            Write-Host "Match found in file: $($file.FullName)"
+            Write-Host "Line: $line"
+        }
+    }
+}
