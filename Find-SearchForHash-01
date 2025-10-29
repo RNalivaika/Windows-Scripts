@@ -1,0 +1,13 @@
+# Search a folder looking for a file with a specifig Hash
+#########################################
+
+$TargetHash = "AA3A83CC26CEE691A8607BF9E682E0F0"
+$SearchPath = "F:\"
+$Alg = "MD5"
+
+Get-ChildItem -Path $SearchPath -Recurse -File | ForEach-Object {
+    $FileHash = Get-FileHash -Path $_.FullName -Algorithm $Alg
+    if ($FileHash.Hash -eq $TargetHash) {
+        Write-Output "Match found: $($_.FullName)"
+    }
+}
