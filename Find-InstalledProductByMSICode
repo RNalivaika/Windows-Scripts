@@ -1,0 +1,3 @@
+# Query WMI for a particular MSI ID
+
+Get-WmiObject -Query "SELECT * FROM Win32_Product WHERE IdentifyingNumber = '{CB56A75D-F839-4090-BABD-75B91EB19E43}'"
